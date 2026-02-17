@@ -6,6 +6,7 @@ export interface Settlement {
   city: string;
   type: 'control' | 'treatment';
   demolished: boolean;
+  treatment_year?: number;  // Year of demolition (only for treatment group)
   area_km2: number | null;
   centroid: [number, number];
 }

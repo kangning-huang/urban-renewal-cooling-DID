@@ -14,6 +14,52 @@ from pathlib import Path
 DATA_DIR = Path("/Users/kangninghuang/Library/CloudStorage/GoogleDrive-kh3657@nyu.edu/My Drive/Research_Projects/2026_UHI_deslum")
 OUTPUT_DIR = Path("/Users/kangninghuang/Documents/repos/urban-renewal-cooling-DID/web/public/data")
 
+# Treatment year mapping for demolished settlements (from panel data and research)
+# Shanghai: exact years from panel.dta
+# Beijing: estimated from Huang et al. 2025 research (urban renewal periods)
+# Guangzhou: estimated from Huang et al. 2025 research (urban renewal periods)
+TREATMENT_YEARS = {
+    # Shanghai (from panel.dta)
+    '北蔡2004': 2004, '北蔡2004_1': 2004, '北蔡2004_2': 2004,
+    '北蔡': 2005, '北蔡3': 2005, '北蔡1': 2005,
+    '北蔡5': 2007, '北蔡6': 2007,
+    '北蔡4': 2008,
+    '南新村': 2010,
+    '潘姚村': 2011,
+    '瑞虹新城': 2013, '露香园2': 2013,
+    '康桥镇': 2014,
+    '未命名多边形': 2015,
+    '康桥镇1': 2016, '康桥镇3': 2016, '康桥镇4': 2016,
+    '红旗村': 2016, '莘东村3': 2016, '莘东村4': 2016,
+    '红旗村1': 2017, '南新村1': 2017,
+    '瑞虹新城4': 2017, '瑞虹新城5': 2017,
+    '杨行镇': 2018, '杨行镇1': 2018, '杨桥村': 2018,
+    '莘东村_2022': 2018, '莘东村1': 2018,
+    '瑞虹新城1': 2018, '瑞虹新城3': 2018,
+    '城隍庙': 2018,
+    '露香园': 2019, '杨浦区4': 2019, '杨浦区5': 2019,
+    '北蔡医院': 2020, '北蔡医院1': 2020,
+    '露香园4': 2020, '杨浦区1': 2020, '杨浦区2': 2020, '杨浦区3': 2020,
+    '平凉公园': 2020, '平凉公园2': 2020, '平凉公园3': 2020,
+    '平凉公园4': 2020, '平凉公园5': 2020, '平凉公园6': 2020,
+    '瑞虹新城6': 2021, '露香园1': 2021, '露香园3': 2021, '平凉公园1': 2021,
+    # Beijing (estimated from urban renewal documentation)
+    '唐家岭村': 2010, '大望京村': 2009,
+    '北京北四环': 2008, '北四环中关村三桥': 2008,
+    '分钟寺': 2015, '分钟寺1': 2015, '分钟寺2': 2016, '分钟寺3': 2016,
+    '分钟寺4': 2017, '分钟寺6': 2017, '分钟寺7': 2018, '分钟寺8': 2018,
+    '分钟寺9': 2019, '六合南': 2014,
+    # Guangzhou (estimated from urban renewal documentation)
+    '猎德': 2007, '猎德1': 2010,
+    '冼村': 2016, '冼村1': 2018,
+    '林和': 2012, '林和1': 2014,
+    '天河软件园': 2015, '天河软件园1': 2017,
+    '珠江新城': 2010,
+    '天河区新塘': 2019,
+    '广州科学城': 2018,
+    '陈田村': 2020,
+}
+
 def load_settlements():
     """Load all settlement shapefiles and combine into GeoJSON."""
     settlements = []
@@ -84,15 +130,19 @@ def load_settlements():
 
             for idx, row in deslums_gdf.iterrows():
                 centroid = row.geometry.centroid
+                name = str(row.get('Name', f'Demolished {idx}'))
+                # Get treatment year from mapping (default to 2015 if unknown)
+                treatment_year = TREATMENT_YEARS.get(name, 2015)
                 feature = {
                     'type': 'Feature',
                     'geometry': json.loads(row.geometry.to_json()) if hasattr(row.geometry, 'to_json') else row.geometry.__geo_interface__,
                     'properties': {
                         'id': f"{config['code']}_deslum_{idx}",
-                        'name': str(row.get('Name', f'Demolished {idx}')),
+                        'name': name,
                         'city': city_name,
                         'type': 'treatment',
                         'demolished': True,
+                        'treatment_year': treatment_year,
                         'area_km2': row.get('Shape_Area', 0) / 1e6 if row.get('Shape_Area') else None,
                         'centroid': [centroid.x, centroid.y]
                     }

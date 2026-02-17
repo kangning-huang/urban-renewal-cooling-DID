@@ -178,33 +178,71 @@ body {
   color: var(--text-secondary);
 }
 
+/* Map legend overlay */
 .map-legend {
-  padding: 1rem 1.25rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   display: flex;
-  gap: 1.5rem;
-  background: #fafbfc;
-  border-top: 1px solid var(--border-color);
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.8rem;
+  z-index: 1000;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
+  gap: 8px;
 }
 
 .legend-color {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
 }
 
-.legend-color.control {
-  background-color: var(--control-color);
+.legend-label {
+  color: var(--text-primary);
+  white-space: nowrap;
 }
 
-.legend-color.treatment {
-  background-color: var(--treatment-color);
+/* Gradient legend for demolished settlements */
+.legend-gradient {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.gradient-bar {
+  width: 120px;
+  height: 12px;
+  border-radius: 3px;
+  background: linear-gradient(to right,
+    #ffffb2 0%,
+    #fecc5c 25%,
+    #fd8d3c 50%,
+    #f03b20 75%,
+    #bd0026 100%
+  );
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.gradient-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.legend-gradient .legend-label {
+  margin-top: 2px;
 }
 
 /* Chart */
