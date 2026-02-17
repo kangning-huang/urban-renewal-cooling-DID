@@ -21,7 +21,10 @@ export default function DIDChart({ regressionResults, selectedCity }: DIDChartPr
   const cityKey = selectedCity === 'all' ? 'all' : selectedCity;
 
   const parallelTrendsData = useMemo(() => {
-    return regressionResults.parallel_trends[cityKey];
+    return regressionResults.parallel_trends[cityKey].map((d) => ({
+      ...d,
+      ci_range: d.ci_upper - d.ci_lower,
+    }));
   }, [regressionResults, cityKey]);
 
   const didResult = useMemo(() => {
@@ -91,17 +94,18 @@ export default function DIDChart({ regressionResults, selectedCity }: DIDChartPr
               }}
             />
 
-            {/* Confidence interval area */}
-            <Area
-              type="monotone"
-              dataKey="ci_upper"
-              stroke="none"
-              fill="#3b82f6"
-              fillOpacity={0}
-            />
+            {/* Confidence interval shaded band between ci_lower and ci_upper */}
             <Area
               type="monotone"
               dataKey="ci_lower"
+              stackId="ci"
+              stroke="none"
+              fill="transparent"
+            />
+            <Area
+              type="monotone"
+              dataKey="ci_range"
+              stackId="ci"
               stroke="none"
               fill="#3b82f6"
               fillOpacity={0.15}
