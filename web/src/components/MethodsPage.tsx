@@ -9,10 +9,19 @@ export default function MethodsPage() {
         <h3>Difference-in-Differences Framework</h3>
         <p>
           We assessed the causal impact of informal settlement demolition on Land Surface Temperature (LST)
-          using a difference-in-differences (DiD) framework. This quasi-experimental approach compares
-          LST changes in demolished settlements (treatment group) to those in non-demolished settlements
-          (control group) before and after the intervention, controlling for time-invariant unobserved
-          heterogeneity and observed time-varying covariates.
+          using a difference-in-differences (DiD) framework—rarely used in urban climate research. This
+          quasi-experimental approach compares LST changes in demolished settlements (treatment group)
+          to those in non-demolished settlements (control group) before and after the intervention,
+          controlling for time-invariant unobserved heterogeneity and observed time-varying covariates.
+        </p>
+        <p>
+          The method's key advantage lies in its <strong>two-stage differencing strategy</strong>: the first
+          difference (before-after within each group) eliminates time-invariant confounders including
+          unobserved site characteristics, while the second difference (comparing changes between treatment
+          and control groups) removes common time trends such as regional climate change. This approach
+          requires only that demolished and control settlements would have followed parallel temperature
+          trajectories absent the intervention—a weaker and more testable assumption than the random
+          assignment required by experimental design.
         </p>
 
         <div className="equation-box">
@@ -114,8 +123,17 @@ export default function MethodsPage() {
           <h4>1. Parallel Trends Test</h4>
           <p>
             The DiD design requires that treatment and control groups would have followed parallel
-            temperature trajectories absent the intervention. Pre-intervention coefficients (years -7 to -1)
-            were tightly centered on zero, indicating the groups were on identical thermal paths before demolition.
+            temperature trajectories absent the intervention. We tested this assumption through visual
+            inspection by plotting the yearly temperature gap between demolished and non-demolished
+            settlements from 7 years before through 7 years after demolition.
+          </p>
+          <p>
+            Pre-intervention coefficients (years -7 to -1) were tightly centered on zero and statistically
+            indistinguishable from it, with all 90% confidence bands overlapping the horizontal reference
+            line. This flat pre-trend indicates that, absent demolition, the two groups were on identical
+            thermal paths. Immediately after demolition the series diverges sharply downward—because the
+            pre-period is flat, this divergence can be attributed to demolition rather than to pre-existing
+            differences or coincident shocks.
           </p>
         </div>
 
@@ -185,16 +203,27 @@ export default function MethodsPage() {
         <div className="robustness-item">
           <h4>3. Placebo Test</h4>
           <p>
-            Demolition years were randomly assigned 500 times to generate a null distribution.
-            The actual DiD estimates fell far in the left tail of all placebo distributions,
-            confirming effects are unlikely due to random chance:
+            To confirm that our estimated cooling effects were not spurious, we conducted a placebo test
+            by randomly assigning demolition years 500 times and comparing actual DiD estimates against
+            the null distribution. If the actual DiD estimate falls within the range of the placebo
+            distribution, the observed effect may be attributable to random variation. Conversely, if
+            the actual estimate lies far outside the placebo distribution, the effect is statistically
+            significant and robust.
+          </p>
+          <p>
+            The distribution of placebo effects is centered near zero and concentrated on the right side
+            of the actual DiD estimates, which fall far in the left tail—indicating that the observed
+            cooling effects are unusually large and unlikely to occur by chance:
           </p>
           <PlaceboChart />
         </div>
 
         <div className="robustness-item">
           <h4>4. Heterogeneity Analysis</h4>
-          <p>Spatial heterogeneity was examined through interaction terms:</p>
+          <p>
+            We examined spatial heterogeneity by testing whether settlement location and size influence
+            cooling magnitude through interaction terms:
+          </p>
           <table className="data-table">
             <thead>
               <tr>
@@ -219,6 +248,12 @@ export default function MethodsPage() {
               </tr>
             </tbody>
           </table>
+          <p className="table-note">
+            The distance-dependent pattern reflects land economics: lower peripheral land prices enable
+            developers to reduce building coverage ratios, while central redevelopments prioritize higher
+            density. Settlement size does not meaningfully modulate the thermal response, reflecting the
+            scale-independent nature of local surface cooling mechanisms.
+          </p>
         </div>
       </section>
 

@@ -8,14 +8,20 @@ export default function ImplicationsPage() {
         <p>
           This study provides the <strong>first robust causal evidence</strong> that demolishing dense
           informal settlements leads to significant reductions in land surface temperatures. Using a
-          difference-in-differences framework with 77 demolished settlements and 584 controls across
-          Beijing, Shanghai, and Guangzhou (2002-2022), we found:
+          difference-in-differences framework—rarely used in urban climate research—with 77 demolished
+          settlements and 584 controls across Beijing, Shanghai, and Guangzhou (2002-2022), we found:
         </p>
         <ul className="key-points">
           <li>Average cooling effect of <strong>1.47 K</strong> across all cities</li>
-          <li>Strongest effect in Beijing (<strong>3.04 K</strong>) due to semi-arid climate enhancing evapotranspiration</li>
+          <li>Strongest effect in Beijing (<strong>3.04 K</strong>) due to semi-arid climate enhancing
+            evapotranspiration, plus higher latitude requiring larger building spacing for winter sunlight access</li>
           <li>Consistent effects in humid cities: Shanghai (1.09 K) and Guangzhou (1.23 K)</li>
         </ul>
+        <p>
+          Post-demolition land use audits reveal that most cleared sites were redeveloped as formal
+          residential or commercial neighborhoods, with a smaller share converted to parks—so the
+          estimated cooling largely reflects regulated redevelopment rather than wholesale park conversion.
+        </p>
       </section>
 
       <section className="implication-section">
@@ -23,18 +29,22 @@ export default function ImplicationsPage() {
         <div className="highlight-box warning">
           <p>
             The cooling effects are <strong>mostly local</strong>. The total demolished area (~7.7 km²)
-            represents less than 1% of city land—far below the 15-30% land-cover change threshold needed
-            to shift city-wide temperatures.
+            represents less than 1% of city land—far below the ~15-30% land-cover change thresholds that
+            previous studies suggest are needed to shift the temperature of whole cities.
           </p>
         </div>
         <p>
           City-wide temperature reductions require redevelopment to be orchestrated as part of a
-          coherent greening and ventilation corridor strategy, rather than isolated demolition projects.
+          coherent city-wide greening and ventilation corridor strategy, rather than isolated demolition projects.
         </p>
         <p className="citation">
           Related research:{' '}
           <a href="https://doi.org/10.1021/acs.est.3c09108" target="_blank" rel="noopener noreferrer">
             Xu et al. (2024) - Green space coverage vs. spatial distribution
+          </a>
+          ;{' '}
+          <a href="https://doi.org/10.3390/urbansci8020041" target="_blank" rel="noopener noreferrer">
+            Licón-Portillo et al. (2024) - From block to city scale
           </a>
         </p>
       </section>
@@ -42,15 +52,27 @@ export default function ImplicationsPage() {
       <section className="implication-section">
         <h3>Urban Renewal as Climate Adaptation</h3>
         <p>
-          Informal settlement renewal can be reframed not just as land management or aesthetic improvement,
-          but as a <strong>concrete strategy for climate adaptation</strong>. The observed cooling is
-          consistent with Chinese planning regulations that mandate:
+          This study advances urban climate research by addressing a widely recognized challenge:
+          establishing <strong>causation rather than correlation</strong> in observational studies of
+          urban interventions. The quasi-experimental difference-in-differences framework demonstrates
+          that natural variation in demolition timing enables rigorous causal inference while accounting
+          for spatial dependencies and temporal confounding.
+        </p>
+        <p>
+          Informal settlement renewal—when it replaces dense, thermally inefficient structures with
+          open space, vegetation, or planned development—can be reframed not just as land management
+          or aesthetic improvement, but as a <strong>concrete strategy for climate adaptation</strong>.
+          The pattern of temperature reduction is consistent with Chinese planning regulations that mandate:
         </p>
         <ul className="regulation-list">
           <li>Minimum greenspace ratios (25-35%)</li>
           <li>Building spacing requirements for sunlight and ventilation</li>
           <li>Upper limits on building density</li>
         </ul>
+        <p>
+          These requirements, once applied to former informal settlements, plausibly contribute to the
+          observed cooling by enforcing greener, more ventilated urban forms.
+        </p>
         <p className="citation">
           Source:{' '}
           <a href="https://www.mohurd.gov.cn/" target="_blank" rel="noopener noreferrer">
@@ -63,9 +85,22 @@ export default function ImplicationsPage() {
         <h3>Spatial Heterogeneity</h3>
         <p>
           Cooling effects are <strong>especially pronounced in peripheral urban areas</strong>, where
-          redevelopment more often includes green space or open land. This distance-dependent pattern
-          reflects land economics: lower peripheral land prices enable developers to reduce building
-          coverage ratios, while central redevelopments prioritize higher density.
+          redevelopment more often includes green space or open land. In these zones, planning codes
+          tend to specify higher greening standards and lower floor-area ratios, reinforcing the
+          potential for temperature reduction.
+        </p>
+        <p>
+          This distance-dependent pattern reflects systematic differences in post-demolition redevelopment
+          outcomes shaped by land economics: lower peripheral land prices enable developers to reduce
+          building coverage ratios, while central redevelopments prioritize higher density to extract
+          maximum value from expensive land.
+        </p>
+        <p>
+          Meanwhile, settlement size does not meaningfully modulate the thermal response—reflecting the
+          scale-independent nature of local surface cooling mechanisms. The primary thermal effects of
+          demolition (increased sky view factor, reduced aerodynamic roughness, elimination of thermal
+          mass, and potential evapotranspiration from vegetation) operate universally within the urban
+          canopy layer regardless of site extent.
         </p>
         <p className="citation">
           Economic framework:{' '}
@@ -124,9 +159,10 @@ export default function ImplicationsPage() {
       <section className="implication-section">
         <h3>Global South Relevance</h3>
         <p>
-          While this study centers on China, the findings carry broader relevance for the Global South,
-          where cities face similar trade-offs between cooling dense settlements and protecting vulnerable
-          populations. Informal settlements in many cities exhibit similar characteristics:
+          While this study centers on China's past experience with large-scale demolition, the findings
+          carry broader relevance for the Global South, where cities face similar trade-offs between
+          cooling dense settlements and protecting vulnerable populations. Informal settlements in many
+          cities exhibit similar characteristics:
         </p>
         <div className="global-examples">
           <div className="example">
@@ -143,36 +179,63 @@ export default function ImplicationsPage() {
           </div>
         </div>
         <p>
-          However, many cities lack governance capacity for resettlement or compensation. In these cases,
-          <strong> in-situ upgrading</strong>—through green buffers, cool roofs, or ventilation corridors—may
-          be more feasible and socially sustainable.
+          However, many cities lack governance capacity for resettlement or compensation. These insights
+          remain valuable even as China and other countries shift from demolition toward incremental,
+          <strong> in-situ upgrading</strong> and <strong>micro-renewal</strong>, in line with evolving
+          policy priorities that discourage large-scale clearance and emphasize climate adaptation.
+          In-situ upgrading—through green buffers, cool roofs, or ventilation corridors—may be more
+          feasible and socially sustainable.
+        </p>
+        <p>
+          The difference-in-differences framework developed here offers a <strong>transferable tool</strong> for
+          evaluating the causal thermal impacts of diverse interventions, from cool roofs and tree planting
+          to ventilation corridors and micro-greening.
         </p>
         <p className="citation">
           Cool roofs research:{' '}
           <a href="https://doi.org/10.1016/j.rser.2022.112183" target="_blank" rel="noopener noreferrer">
             Nutkiewicz et al. (2022) - Cool roofs for informal settlement dwellers
           </a>
+          ;{' '}
+          <a href="https://doi.org/10.1080/01onal.2024.2297961" target="_blank" rel="noopener noreferrer">
+            Wang et al. (2024) - Micro-regeneration in China
+          </a>
         </p>
       </section>
 
       <section className="implication-section">
         <h3>Future Research Directions</h3>
+        <div className="highlight-box warning">
+          <h4>Methodological Gap: LST vs. Lived Experience</h4>
+          <p>
+            While our findings show that demolition reduces surface temperatures, they leave open
+            the question of how such changes translate into actual human experience. A 1.5 K LST
+            reduction could translate to vastly different lived experiences depending on building
+            materials, ventilation, and household cooling capacity—factors systematically correlated
+            with socioeconomic status.
+          </p>
+        </div>
         <ol className="future-directions">
           <li>
             <strong>Ground-truth validation:</strong> Link LST changes to physiological heat exposure
             (core body temperature, heat-related morbidity) and behavioral adaptation patterns
+            (cooling expenditure, time-activity patterns)
           </li>
           <li>
             <strong>Health outcomes:</strong> Integrate wearable temperature sensors or survey residents
-            about heat-related symptoms
+            about heat-related symptoms to clarify how much cooling is necessary for tangible well-being benefits
           </li>
           <li>
-            <strong>Alternative interventions:</strong> Apply DiD framework to evaluate cool roofs,
-            tree planting, and green infrastructure programs
+            <strong>Alternative interventions:</strong> Apply the DiD framework to evaluate the causal
+            impacts of cool roofs, tree planting, ventilation corridors, and green infrastructure programs
           </li>
           <li>
             <strong>Policy evolution:</strong> As China shifts toward incremental "micro-renewal"
             approaches, evaluate which strategies yield greatest thermal relief with least social disruption
+          </li>
+          <li>
+            <strong>External validity:</strong> Test whether similar thermal outcomes occur in smaller,
+            less-resourced cities or across different climate zones (e.g., tropical or semi-arid regions)
           </li>
         </ol>
         <p className="citation">
@@ -186,11 +249,15 @@ export default function ImplicationsPage() {
       <section className="implication-section conclusion">
         <h3>Conclusion</h3>
         <p>
+          Our results provide the first robust causal evidence that demolishing dense informal
+          settlements leads to significant reductions in land surface temperatures. Yet, for this
+          cooling to translate into broader urban resilience, demolition must be accompanied by
+          policies that mitigate social displacement and ensure that vulnerable populations share
+          in the environmental gains.
+        </p>
+        <p>
           Urban climate adaptation strategies should treat informal settlements not just as risks to
           be managed, but as <strong>opportunities for transformative, inclusive change</strong>.
-          For cooling benefits to translate into broader urban resilience, demolition must be accompanied
-          by policies that mitigate social displacement and ensure vulnerable populations share in
-          environmental gains.
         </p>
       </section>
     </div>
