@@ -79,12 +79,12 @@ export default function DIDChart({ regressionResults, selectedCity }: DIDChartPr
             {/* Reference lines */}
             <ReferenceLine y={0} stroke="#666" strokeWidth={1} />
             <ReferenceLine
-              x={0}
+              x={-1}
               stroke="#e74c3c"
               strokeDasharray="5 5"
               strokeWidth={2}
               label={{
-                value: 'Demolition',
+                value: 'Reference (t=-1)',
                 position: 'top',
                 fill: '#e74c3c',
                 fontSize: 11,
