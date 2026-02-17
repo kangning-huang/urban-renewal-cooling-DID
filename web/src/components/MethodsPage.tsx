@@ -1,5 +1,4 @@
 import PlaceboChart from './PlaceboChart';
-import HeterogeneityChart from './HeterogeneityChart';
 
 export default function MethodsPage() {
   return (
@@ -220,7 +219,6 @@ export default function MethodsPage() {
               </tr>
             </tbody>
           </table>
-          <HeterogeneityChart />
         </div>
       </section>
 
