@@ -37,7 +37,7 @@ const DEFAULT_PLACEBO_DATA: Record<string, { name: string; actualEffect: number;
 export default function PlaceboChart({ placeboData }: PlaceboChartProps) {
   const [selectedCity, setSelectedCity] = useState<string>('all');
 
-  const { histogramData, actualEffect, pValue } = useMemo(() => {
+  const { histogramData, actualEffect, pValue, xDomain } = useMemo(() => {
     const cityKey = selectedCity as keyof typeof DEFAULT_PLACEBO_DATA;
     const cityInfo = DEFAULT_PLACEBO_DATA[cityKey];
 
@@ -84,10 +84,15 @@ export default function PlaceboChart({ placeboData }: PlaceboChartProps) {
     const moreExtreme = simulations.filter(s => s <= actual).length;
     const calculatedPValue = moreExtreme / simulations.length;
 
+    // Calculate X domain to include both histogram data and actual effect
+    const domainMin = Math.min(binStart, actual - 0.2);
+    const domainMax = Math.max(binEnd, actual + 0.2);
+
     return {
       histogramData: bins,
       actualEffect: actual,
       pValue: calculatedPValue,
+      xDomain: [domainMin, domainMax] as [number, number],
     };
   }, [selectedCity, placeboData]);
 
@@ -115,7 +120,7 @@ export default function PlaceboChart({ placeboData }: PlaceboChartProps) {
             <XAxis
               dataKey="binCenter"
               type="number"
-              domain={['dataMin', 'dataMax']}
+              domain={xDomain}
               tick={{ fontSize: 10 }}
               tickFormatter={(value) => value.toFixed(1)}
               label={{
