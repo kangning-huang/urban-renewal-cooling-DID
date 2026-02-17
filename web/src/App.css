@@ -354,6 +354,27 @@ body {
   color: #1e3a5f;
 }
 
+.github-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.github-link:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.github-link svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* Footer */
 .footer {
   background: var(--surface);
