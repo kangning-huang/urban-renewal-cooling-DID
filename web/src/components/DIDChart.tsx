@@ -7,10 +7,34 @@ import {
   Tooltip,
   ReferenceLine,
   ResponsiveContainer,
-  Area,
   ComposedChart,
+  Customized,
 } from 'recharts';
-import type { RegressionResults, CitySelection } from '../types';
+import type { RegressionResults, CitySelection, ParallelTrendPoint } from '../types';
+
+/** Renders an SVG path shading the area between ci_lower and ci_upper */
+function CIBand({ xAxisMap, yAxisMap, data }: { xAxisMap?: Record<string, any>; yAxisMap?: Record<string, any>; data: ParallelTrendPoint[] }) {
+  const xAxis = xAxisMap && (Object.values(xAxisMap)[0] as any);
+  const yAxis = yAxisMap && (Object.values(yAxisMap)[0] as any);
+
+  if (!xAxis?.scale || !yAxis?.scale || !data.length) return null;
+
+  const points = data.map((d) => ({
+    x: xAxis.scale(d.year) as number,
+    yUpper: yAxis.scale(d.ci_upper) as number,
+    yLower: yAxis.scale(d.ci_lower) as number,
+  }));
+
+  // Trace upper bound forward, then lower bound backward to close the shape
+  const pathD = [
+    `M ${points[0].x} ${points[0].yUpper}`,
+    ...points.slice(1).map((p) => `L ${p.x} ${p.yUpper}`),
+    ...points.slice().reverse().map((p) => `L ${p.x} ${p.yLower}`),
+    'Z',
+  ].join(' ');
+
+  return <path d={pathD} fill="#3b82f6" fillOpacity={0.15} stroke="none" />;
+}
 
 interface DIDChartProps {
   regressionResults: RegressionResults;
@@ -21,10 +45,7 @@ export default function DIDChart({ regressionResults, selectedCity }: DIDChartPr
   const cityKey = selectedCity === 'all' ? 'all' : selectedCity;
 
   const parallelTrendsData = useMemo(() => {
-    return regressionResults.parallel_trends[cityKey].map((d) => ({
-      ...d,
-      ci_range: d.ci_upper - d.ci_lower,
-    }));
+    return regressionResults.parallel_trends[cityKey];
   }, [regressionResults, cityKey]);
 
   const didResult = useMemo(() => {
@@ -95,20 +116,8 @@ export default function DIDChart({ regressionResults, selectedCity }: DIDChartPr
             />
 
             {/* Confidence interval shaded band between ci_lower and ci_upper */}
-            <Area
-              type="monotone"
-              dataKey="ci_lower"
-              stackId="ci"
-              stroke="none"
-              fill="transparent"
-            />
-            <Area
-              type="monotone"
-              dataKey="ci_range"
-              stackId="ci"
-              stroke="none"
-              fill="#3b82f6"
-              fillOpacity={0.15}
+            <Customized
+              component={(props: any) => <CIBand {...props} data={parallelTrendsData} />}
             />
 
             {/* Main coefficient line */}
