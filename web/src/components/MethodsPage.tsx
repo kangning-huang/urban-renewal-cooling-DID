@@ -1,3 +1,6 @@
+import PlaceboChart from './PlaceboChart';
+import HeterogeneityChart from './HeterogeneityChart';
+
 export default function MethodsPage() {
   return (
     <div className="page-content">
@@ -187,12 +190,7 @@ export default function MethodsPage() {
             The actual DiD estimates fell far in the left tail of all placebo distributions,
             confirming effects are unlikely due to random chance:
           </p>
-          <ul>
-            <li><strong>All Cities:</strong> Actual effect (-1.47 K) vs. placebo distribution centered near 0</li>
-            <li><strong>Beijing:</strong> Actual effect (-3.04 K) well outside placebo range ({'>'}  -1.0 K)</li>
-            <li><strong>Shanghai:</strong> Actual effect (-1.09 K) on extreme left of distribution</li>
-            <li><strong>Guangzhou:</strong> Actual effect (-1.23 K) separated from placebo bulk</li>
-          </ul>
+          <PlaceboChart />
         </div>
 
         <div className="robustness-item">
@@ -222,6 +220,7 @@ export default function MethodsPage() {
               </tr>
             </tbody>
           </table>
+          <HeterogeneityChart />
         </div>
       </section>
 

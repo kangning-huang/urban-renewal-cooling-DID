@@ -806,6 +806,166 @@ body {
   color: var(--primary-color);
 }
 
+/* Placebo Chart */
+.placebo-chart-container {
+  margin: 1.5rem 0;
+}
+
+.placebo-city-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.placebo-city-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.placebo-city-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.placebo-city-btn.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.placebo-chart {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.placebo-interpretation {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #eff6ff;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #1e40af;
+}
+
+.placebo-interpretation strong {
+  color: var(--primary-dark);
+}
+
+.placebo-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.placebo-stats span {
+  font-size: 0.9rem;
+}
+
+/* Heterogeneity Chart */
+.heterogeneity-chart-container {
+  margin: 1.5rem 0;
+}
+
+.heterogeneity-chart-container .chart-header {
+  margin-bottom: 1rem;
+}
+
+.heterogeneity-chart-container .chart-header h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary);
+}
+
+.heterogeneity-chart-container .chart-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.heterogeneity-chart {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.heterogeneity-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.heterogeneity-legend .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.heterogeneity-legend .legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.heterogeneity-legend .legend-line {
+  width: 20px;
+  height: 2px;
+  background: #1e40af;
+}
+
+.heterogeneity-stats {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f0fdf4;
+  border-radius: 8px;
+}
+
+.heterogeneity-stats .stats-grid {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.heterogeneity-stats .stat-item {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.heterogeneity-stats .label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.heterogeneity-stats .value {
+  color: var(--text-primary);
+}
+
+.heterogeneity-stats .interpretation {
+  font-size: 0.9rem;
+  color: #166534;
+  margin: 0;
+}
+
+.heterogeneity-stats .interpretation strong {
+  color: #14532d;
+}
+
 /* Responsive adjustments for pages */
 @media (max-width: 768px) {
   .page-content {

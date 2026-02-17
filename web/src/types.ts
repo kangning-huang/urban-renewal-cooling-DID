@@ -51,6 +51,32 @@ export interface ParallelTrendPoint {
   ci_upper: number;
 }
 
+export interface PlaceboTestResult {
+  actual_effect: number;
+  simulations: number[];
+}
+
+export interface HeterogeneitySettlement {
+  log_distance: number;
+  cooling_effect: number;
+  city: string;
+}
+
+export interface HeterogeneityRegression {
+  slope: number;
+  intercept: number;
+  r2: number;
+  p_value: number;
+  relationship: string;
+}
+
+export interface HeterogeneityData {
+  log_distance_to_center: {
+    settlements: HeterogeneitySettlement[];
+    regression: HeterogeneityRegression;
+  };
+}
+
 export interface RegressionResults {
   did_coefficients: {
     all: DIDResult;
@@ -64,6 +90,13 @@ export interface RegressionResults {
     Shanghai: ParallelTrendPoint[];
     Guangzhou: ParallelTrendPoint[];
   };
+  placebo_tests?: {
+    all: PlaceboTestResult;
+    Beijing: PlaceboTestResult;
+    Shanghai: PlaceboTestResult;
+    Guangzhou: PlaceboTestResult;
+  };
+  heterogeneity?: HeterogeneityData;
 }
 
 export type CitySelection = 'all' | 'Beijing' | 'Shanghai' | 'Guangzhou';
