@@ -6,10 +6,10 @@ interface CitySelectorProps {
 }
 
 const CITIES: { value: CitySelection; label: string; emoji: string }[] = [
-  { value: 'all', label: 'All Cities', emoji: '🌍' },
-  { value: 'Beijing', label: 'Beijing', emoji: '🏛️' },
-  { value: 'Shanghai', label: 'Shanghai', emoji: '🌆' },
-  { value: 'Guangzhou', label: 'Guangzhou', emoji: '🌴' },
+  { value: 'all', label: 'All Cities', emoji: '🇨🇳' },
+  { value: 'Beijing', label: 'Beijing', emoji: '🏯' },
+  { value: 'Shanghai', label: 'Shanghai', emoji: '🗼' },
+  { value: 'Guangzhou', label: 'Guangzhou', emoji: '🌺' },
 ];
 
 export default function CitySelector({ selectedCity, onCityChange }: CitySelectorProps) {
