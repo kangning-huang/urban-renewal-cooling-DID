@@ -181,10 +181,30 @@ export default function MapView({ settlements, cities, selectedCity }: MapViewPr
   }, [hoveredId, filteredFeatures]);
 
   return (
-    <div className="map-container">
-      <div ref={mapContainer} className="map" />
+    <div className="map-wrapper">
+      <div className="map-container">
+        <div ref={mapContainer} className="map" />
 
-      {/* Legend overlay on top of map */}
+        {tooltipContent && (
+          <div className="map-tooltip">
+            <strong>{tooltipContent.name}</strong>
+            <br />
+            <span>City: {tooltipContent.city}</span>
+            <br />
+            <span>Status: {tooltipContent.status}</span>
+            {tooltipContent.demolitionYear && (
+              <>
+                <br />
+                <span>Demolished: {tooltipContent.demolitionYear}</span>
+              </>
+            )}
+            <br />
+            <span>Area: {tooltipContent.area}</span>
+          </div>
+        )}
+      </div>
+
+      {/* Legend below map */}
       <div className="map-legend">
         <div className="legend-item">
           <span
@@ -194,32 +214,12 @@ export default function MapView({ settlements, cities, selectedCity }: MapViewPr
           <span className="legend-label">Informal Settlements</span>
         </div>
         <div className="legend-item legend-gradient">
+          <span className="legend-label">Demolished:</span>
+          <span className="gradient-year">{MIN_YEAR}</span>
           <div className="gradient-bar" />
-          <div className="gradient-labels">
-            <span>{MIN_YEAR}</span>
-            <span>{MAX_YEAR}</span>
-          </div>
-          <span className="legend-label">Demolished Informal Settlements</span>
+          <span className="gradient-year">{MAX_YEAR}</span>
         </div>
       </div>
-
-      {tooltipContent && (
-        <div className="map-tooltip">
-          <strong>{tooltipContent.name}</strong>
-          <br />
-          <span>City: {tooltipContent.city}</span>
-          <br />
-          <span>Status: {tooltipContent.status}</span>
-          {tooltipContent.demolitionYear && (
-            <>
-              <br />
-              <span>Demolished: {tooltipContent.demolitionYear}</span>
-            </>
-          )}
-          <br />
-          <span>Area: {tooltipContent.area}</span>
-        </div>
-      )}
     </div>
   );
 }
