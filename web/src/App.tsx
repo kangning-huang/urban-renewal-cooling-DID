@@ -153,22 +153,23 @@ function App() {
           <div className="author-list">
             <div className="author">
               <span className="author-name">Yujie Sun</span>
-              <span className="author-affiliation">New York University</span>
+              <span className="author-affiliation">Tongji University, Shanghai, China</span>
             </div>
             <div className="author">
               <span className="author-name">Xuyan Gao</span>
-              <span className="author-affiliation">New York University</span>
+              <span className="author-affiliation">Xi'an Jiaotong-Liverpool University, Suzhou, Jiangsu, China</span>
             </div>
             <div className="author">
-              <span className="author-name">Jiayong Liang</span>
-              <span className="author-affiliation">New York University</span>
+              <span className="author-name">Jiayong Liang*</span>
+              <span className="author-affiliation">Shanghai Key Laboratory of Urban Design and Urban Science, NYU Shanghai, Shanghai, China</span>
               <a href="mailto:jiayong.liang@nyu.edu" className="author-email">jiayong.liang@nyu.edu</a>
             </div>
             <div className="author">
               <a href="https://kangning-huang.github.io/main/" target="_blank" rel="noopener noreferrer" className="author-name author-link">
-                Kangning Huang
+                Kangning Huang*
               </a>
-              <span className="author-affiliation">New York University</span>
+              <span className="author-affiliation">Shanghai Key Laboratory of Urban Design and Urban Science, NYU Shanghai, Shanghai, China</span>
+              <a href="mailto:kangning.huang@nyu.edu" className="author-email">kangning.huang@nyu.edu</a>
             </div>
           </div>
         </div>
