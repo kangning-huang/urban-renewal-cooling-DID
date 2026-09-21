@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://kangning-huang.github.io/urban-renewal-cooling-DID/",
+  "homepage": "https://cooling.kangning-huang.com/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
